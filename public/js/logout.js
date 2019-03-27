@@ -1,5 +1,5 @@
 function logout() {
-	fetch('http://172.20.10.12:8000/api/auth/logout', {
+	fetch('http://mochinerary.id/api/auth/logout', {
 		method: 'post',
 		headers: {
 			'Authorization': 'Bearer ' + localStorage.getItem('token'),
