@@ -11,6 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/index', function (){
+	return view('pages.index');
 });
+
+Route::get('/login', function (){
+	return view('pages.login');
+});
+
+Route::get('/dashboard', function (){
+	return view('pages.dashboard');
+});
+
+Route::get('/myplan', function (){
+	return view('pages.myplan');
+});
+
+Route::get('/budget', function () {
+    return view('pages.budget');
+});
+
+Route::get('/timeline', function () {
+    return view('pages.timeline');
+});
+
+// Route::get('/login', 'PagesController@login');
+
+// Route::get('/dashboard', 'PagesController@getStarted');
+
+
+
+
+// Route::get('/budget', 'PagesController@budget');
+
+// Route::get('/itinerary', 'PagesController@itinerary');
