@@ -112,7 +112,7 @@ function submitmyplan() {
       activities: activities
     };
 
-    fetch('http://localhost/api/dashboard/create', {
+    fetch('http://mochinerary.id/api/dashboard/create', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ function submitmyplan() {
   }
 
   function fetchCities() {
-    fetch('http://172.20.10.12:8000/api/dashboard/cities', {
+    fetch('http://mochinerary.id/api/dashboard/cities', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
