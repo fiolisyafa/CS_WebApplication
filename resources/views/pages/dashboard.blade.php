@@ -26,7 +26,7 @@
 
   <script>
     function fetchitinerary() {
-    fetch('http://localhost/api/dashboard', {
+    fetch('http://mochinerary.id/api/dashboard', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

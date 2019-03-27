@@ -36,7 +36,7 @@
       password: password
     };
 
-    fetch('http://localhost/api/auth/login', {
+    fetch('http://mochinerary.id/api/auth/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

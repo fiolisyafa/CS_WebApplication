@@ -156,7 +156,7 @@ function submitmyplan() {
   }
 
   function fetchActivityTypes() {
-    fetch('http://172.20.10.12:8000/api/dashboard/activitytype', {
+    fetch('http://mochinerary.id/api/dashboard/activitytype', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

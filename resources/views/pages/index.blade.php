@@ -119,7 +119,7 @@ function adjust_textarea(h) {
       password_confirmation: repassword
     };
 
-    fetch('http://localhost/api/register', {
+    fetch('http://mochinerary.id/api/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
