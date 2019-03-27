@@ -26,7 +26,7 @@
 
   <script>
     function fetchitinerary() {
-    fetch('http://172.20.10.12:8000/api/dashboard', {
+    fetch('http://localhost/api/dashboard', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

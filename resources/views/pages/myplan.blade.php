@@ -112,7 +112,7 @@ function submitmyplan() {
       activities: activities
     };
 
-    fetch('http://172.20.10.12:8000/api/dashboard/create', {
+    fetch('http://localhost/api/dashboard/create', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

@@ -119,7 +119,7 @@ function adjust_textarea(h) {
       password_confirmation: repassword
     };
 
-    fetch('http://172.20.10.12:8000/api/register', {
+    fetch('http://localhost/api/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

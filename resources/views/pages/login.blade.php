@@ -36,7 +36,7 @@
       password: password
     };
 
-    fetch('http://172.20.10.12:8000/api/auth/login', {
+    fetch('http://localhost/api/auth/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
