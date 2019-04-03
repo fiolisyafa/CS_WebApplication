@@ -106,14 +106,16 @@
 
     var current = localStorage.currentItinerary;
 
-    var url = 'https://mochinerary.id/api/dashboard/create';
+    var url = 'https://mochinerary.id/api/dashboard/create',
+      method = 'POST';
     if (current) {
       url = `https://mochinerary.d/api/dashboard/${current}/edit`;
+      method = 'PUT';
     }
 
     // fetch('http://mochinerary.id/api/dashboard/create', {
     fetch(url, {
-      method: 'PUT',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
