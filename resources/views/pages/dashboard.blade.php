@@ -79,6 +79,7 @@
   <script>
   function myFunction() {
     localStorage.removeItem('itinerary');
+    localStorage.removeItem('currentItinerary');
     location.href = "myplan";
   }
 </script>
