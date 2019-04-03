@@ -1,5 +1,5 @@
 function logout() {
-	fetch('http://mochinerary.id/api/auth/logout', {
+	fetch('https://mochinerary.id/api/auth/logout', {
     // fetch('http://127.0.0.1:8001/api/auth/logout', {
 		method: 'post',
 		headers: {

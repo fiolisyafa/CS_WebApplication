@@ -22,7 +22,7 @@
     var list = [];
     function fetchitinerary() {
     // fetch('http://mochinerary.id/api/dashboard', {
-      fetch('http://mochinerary.id/api/dashboard', {
+      fetch('https://mochinerary.id/api/dashboard', {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@
     }
 
     function deleteFunction(itinerary) {
-      fetch(`http://mochinerary.id/api/dashboard/${itinerary}/delete`, {
+      fetch(`https://mochinerary.id/api/dashboard/${itinerary}/delete`, {
         method: 'delete',
         headers: {
           'Content-Type': 'application/json',

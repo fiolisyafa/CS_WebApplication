@@ -44,7 +44,7 @@
     };
 
     // fetch('http://mochinerary.id/api/auth/login', {
-      fetch('http://mochinerary.id/api/auth/login', {
+      fetch('https://mochinerary.id/api/auth/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

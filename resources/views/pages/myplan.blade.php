@@ -106,9 +106,9 @@
 
     var current = localStorage.currentItinerary;
 
-    var url = 'http://mochinerary.id/api/dashboard/create';
+    var url = 'https://mochinerary.id/api/dashboard/create';
     if (current) {
-      url = `http://mochinerary.d/api/dashboard/${current}/edit`;
+      url = `https://mochinerary.d/api/dashboard/${current}/edit`;
     }
 
     // fetch('http://mochinerary.id/api/dashboard/create', {
@@ -138,7 +138,7 @@
   }
 
   function fetchCities() {
-    fetch('http://mochinerary.id/api/dashboard/cities', {
+    fetch('https://mochinerary.id/api/dashboard/cities', {
     // fetch('http://127.0.0.1:8001/api/dashboard/cities', {
       method: 'get',
       headers: {
@@ -159,7 +159,7 @@
   }
 
   function fetchActivityTypes() {
-    fetch('http://mochinerary.id/api/dashboard/activitytype', {
+    fetch('https://mochinerary.id/api/dashboard/activitytype', {
       // fetch('http://127.0.0.1:8001/api/dashboard/activitytype', {
       method: 'get',
       headers: {

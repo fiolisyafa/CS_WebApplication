@@ -30,7 +30,7 @@ Date.daysBetween = function( date1, date2 ) {
 //gets the user's custom activities for the current itinerary
 function fetchCustom() {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/itinerary/${current}/custom`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/custom`, {
     method: 'get',
      headers: {
        'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ function fetchCustom() {
 //gets the user's selected activities for the current itinerary
 function fetchSelected() {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/itinerary/${current}/selected`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/selected`, {
     method: 'get',
      headers: {
        'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ function fetchSelected() {
 //gets the details of the suggested activities that were selected by the users
 function fetchSuggested() {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/itinerary/${current}/suggested`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/suggested`, {
     method: 'get',
      headers: {
        'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ function displayActivitiesOnDay(day) {
 //deletes an activity from the itinerary
 function deleteFunction(activity) {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/itinerary/${current}/${activity}/delete`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/${activity}/delete`, {
     method: 'delete',
     headers: {
      'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ function deleteFunction(activity) {
 //dynamically adds a cell depending on the number of days the trip has
 function fetchItinerary() {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/dashboard/${current}`, {
+  fetch(`https://mochinerary.id/api/dashboard/${current}`, {
     method: 'get',
      headers: {
        'Content-Type': 'application/json',
@@ -240,7 +240,7 @@ function submitCustom() {
     date_time: date_time
   };
 
-  fetch(`http://mochinerary.id/api/itinerary/${current}/create`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/create`, {
    method: 'put',
    headers: {
      'Content-Type': 'application/json',
@@ -269,7 +269,7 @@ function submitCustom() {
 //retreives the suggested activities as filtered by the user's preferences
 function fetchSugg() {
   var current = localStorage.getItem('currentItinerary');
-  fetch(`http://mochinerary.id/api/itinerary/${current}/browse`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/browse`, {
     method: 'get',
      headers: {
        'Content-Type': 'application/json',
@@ -320,7 +320,7 @@ function submitSugg() {
     activity_id: selectedActivity
   };
 
-  fetch(`http://mochinerary.id/api/itinerary/${current}/add/${selectedActivity}`, {
+  fetch(`https://mochinerary.id/api/itinerary/${current}/add/${selectedActivity}`, {
    method: 'put',
    headers: {
      'Content-Type': 'application/json',

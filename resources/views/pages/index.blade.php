@@ -108,7 +108,7 @@ function adjust_textarea(h) {
     };
 
     // fetch('http://mochinerary.id/api/register', {
-      fetch('http://mochinerary.id/api/register', {
+      fetch('https://mochinerary.id/api/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

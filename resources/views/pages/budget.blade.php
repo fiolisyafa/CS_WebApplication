@@ -52,7 +52,7 @@ function submitbudget() {
     };
 
     var current = localStorage.getItem('currentItinerary');
-    fetch(`http://mochinerary.id/api/itinerary/${current}/budget/edit`, {
+    fetch(`https://mochinerary.id/api/itinerary/${current}/budget/edit`, {
      method: 'put',
      headers: {
        'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function submitbudget() {
     var itinerary = JSON.parse(localStorage.getItem('itinerary'));
     var people = itinerary.number_of_people;
 
-    fetch(`http://mochinerary.id/api/itinerary/${current}/budget`, {
+    fetch(`https://mochinerary.id/api/itinerary/${current}/budget`, {
       method: 'get',
        headers: {
          'Content-Type': 'application/json',
