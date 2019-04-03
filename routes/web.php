@@ -12,12 +12,13 @@
 */
 
 
-Route::get('/index', function (){
+Route::get('/', function (){
 	return view('pages.index');
 });
 
 Route::get('/login', function (){
 	return view('pages.login');
+// })->name('login');
 });
 
 Route::get('/dashboard', function (){
@@ -35,14 +36,3 @@ Route::get('/budget', function () {
 Route::get('/timeline', function () {
     return view('pages.timeline');
 });
-
-// Route::get('/login', 'PagesController@login');
-
-// Route::get('/dashboard', 'PagesController@getStarted');
-
-
-
-
-// Route::get('/budget', 'PagesController@budget');
-
-// Route::get('/itinerary', 'PagesController@itinerary');

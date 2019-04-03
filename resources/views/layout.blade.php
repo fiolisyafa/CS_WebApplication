@@ -27,7 +27,7 @@
 		<header class="header">
 			<input class="menu-btn" type="checkbox" id="menu-btn" />
 			<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-			<a href="{{ url('dashboard') }}"><img src="{{ asset('img/icons/mochi.png') }}" class="logo"></a>
+			<a href="{{ url('dashboard') }}"><img src="{{ secure_asset('img/icons/mochi.png') }}" class="logo"></a>
 
 			<ul class="menu">
 				<li><a href="{{ url('myplan') }}"><i class="fas fa-info"></i></a></li>
@@ -39,7 +39,9 @@
 
 		@yield('content')
 
-		<script src="{{ asset('js/logout.js') }}"></script>
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+		<script src="{{ secure_asset('js/logout.js') }}"></script>
 
 	</body>
 

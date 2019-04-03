@@ -37,4 +37,8 @@ class SelectedActivity extends Model
     public function itinerary() {
         return $this->belongsTo('App\Itinerary');
     }
+
+    public function activity() {
+        return $this->belongsTo('App\SuggestedActivity');
+    }
 }

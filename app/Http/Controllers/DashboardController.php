@@ -33,7 +33,7 @@ class DashboardController extends Controller
         // return response()->json(Itinerary::where('user_id', $user_id));   
 
         return response()->json(
-            Itinerary::where('user_id', auth()->user()->id)->get()
+            Itinerary::where('user_id', auth()->user()->id)->with('preferences')->get()
         );
     }
 
@@ -75,7 +75,7 @@ class DashboardController extends Controller
             'name' => 'required',
             'description' => 'required',
             'date_from' => ['required', 'date'],
-            'date_to' => ['required', 'date'],
+            'date_to' => ['required', 'date', 'after:date_from'],
             'number_of_people' => ['required', 'integer'],
             'activities' => ['required', 'array', 'min:1', 'max:12']
         ]);
@@ -114,7 +114,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Itinerary::where('user_id', auth()->user()->id)->where('id', $id)->get());
+        return response()->json(Itinerary::where('user_id', auth()->user()->id)->where('id', $id)->with('preferences')->get());
     }
 
     /**
@@ -143,7 +143,7 @@ class DashboardController extends Controller
             'name' => 'required',
             'description' => 'string',
             'date_from' => ['required', 'date'],
-            'date_to' => ['required', 'date'],
+            'date_to' => ['required', 'date', 'after:date_from'],
             'number_of_people' => ['required', 'integer'],
             'activities' => ['required', 'array', 'min:1', 'max:12']
         ]);
@@ -168,6 +168,8 @@ class DashboardController extends Controller
                 'activity_type_id' => $activity,
             ]);
         }
+
+        $itinerary = Itinerary::with('preferences')->find($id);
 
         return response()->json($itinerary);
     }

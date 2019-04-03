@@ -17,9 +17,16 @@
           <input type="password" name="password" maxlength="100" required id="password">
           <span>Enter your password</span>
       </li>
+
       <div class="redirect_button">
         <input type="button" value="Sign In" onclick="login()">
       </div>
+
+      <div class="redirect_button">
+          <p class="login_text">Don't have an account?</p>
+          <a href="/">Sign Up</a>
+      </div>
+
       </ul>
     </form>
   </div>
@@ -36,7 +43,8 @@
       password: password
     };
 
-    fetch('http://mochinerary.id/api/auth/login', {
+    // fetch('http://mochinerary.id/api/auth/login', {
+      fetch('http://mochinerary.id/api/auth/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -58,6 +66,7 @@
       })
   }
 </script>
+
 </body>
 </html>
 @endsection

@@ -30,4 +30,8 @@ class Itinerary extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function preferences() {
+        return $this->hasMany('App\Preference');
+    }
 }

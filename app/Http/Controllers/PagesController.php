@@ -10,11 +10,11 @@ class PagesController extends Controller
     // 	return view('pages.login');
     // }
 
-    // public function getStarted() {
-    // 	return view('pages.getstarted');
+    // public function dashboard() {
+    // 	return view('pages.dashboard');
     // }
 
-    // public function myPlan() {
+    // public function myplan() {
     // 	return view('pages.myplan');
     // }
 
@@ -22,7 +22,7 @@ class PagesController extends Controller
     // 	return view('pages.budget');
     // }
 
-    // public function itinerary() {
-    //     return view('pages.itinerary');
+    // public function timeline() {
+    //     return view('pages.timeline');
     // }
 }

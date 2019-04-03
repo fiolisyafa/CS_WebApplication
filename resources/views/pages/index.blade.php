@@ -93,18 +93,6 @@ function adjust_textarea(h) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
   function signup() {
     var fullname = document.getElementById("fullname").value,
@@ -119,7 +107,8 @@ function adjust_textarea(h) {
       password_confirmation: repassword
     };
 
-    fetch('http://mochinerary.id/api/register', {
+    // fetch('http://mochinerary.id/api/register', {
+      fetch('http://mochinerary.id/api/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

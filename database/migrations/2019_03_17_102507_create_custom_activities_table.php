@@ -20,9 +20,7 @@ class CreateCustomActivitiesTable extends Migration
             $table->integer('fee');
             $table->dateTime('date_time');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('itinerary_id');
-            $table->unsignedBigInteger('activity_type_id');
 
             $table->timestamps();
 
@@ -30,8 +28,6 @@ class CreateCustomActivitiesTable extends Migration
             $table->primary('id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('activity_type_id')->references('id')->on('activity_types');
         });
     }
 

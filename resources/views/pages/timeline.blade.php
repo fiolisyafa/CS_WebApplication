@@ -2,7 +2,7 @@
 
 
 @section('heads')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet-timeline.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ secure_asset('css/stylesheet-timeline.css') }}">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" media="screen">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -16,84 +16,18 @@
 
 @section('content')
 
-<div class="outside" id="leaves_bg">
+<div class="outside" >
  <div class="calendar">
-  <div class="main-gallery js-flickity">
-     <div class="gallery-cell">Day 1</div>
-     <div class="gallery-cell">Day 2</div>
-     <div class="gallery-cell">Day 3</div>
-     <div class="gallery-cell">Day 4</div>
-     
+  <div class="main-gallery" id="days-list">
+
   </div>
   
  </div>
- <div class="inside">
+ <div class="inside" id="leaves_bg">
   <div class="time">
    <div class="containing">
-    <!-- <div class="left">
-     <div class="box">00:00</div>
-     <div class="box">01:00</div>
-     <div class="box">02:00</div>
-     <div class="box">03:00</div>
-    </div> -->
-    <div class="right scrollbar" id="leaves_bg">
-     <div class="all">
-      <div class="duration">
-       <div class="part1">
-        14:00
-       </div>
-       <div class="part2">
-        45 min
-       </div>
-      </div>
-      <div class="items">
-       <div class="part3">
-        Nelayan Resto
-       </div>
-       <div class="part4">
-        $15
-       </div> 
-      </div>
-      <span class="close">x</span>        
-     </div>
-     <div class="all">
-      <div class="duration">
-       <div class="part1">
-        14:00
-       </div>
-       <div class="part2">
-        45 min
-       </div>
-      </div>
-      <div class="items">
-       <div class="part3">
-        Nelayan Resto
-       </div>
-       <div class="part4">
-        $15
-       </div> 
-      </div>
-      <span class="close">x</span>        
-     </div>
-     <div class="all">
-      <div class="duration">
-       <div class="part1">
-        14:00
-       </div>
-       <div class="part2">
-        45 min
-       </div>
-      </div>
-      <div class="items">
-       <div class="part3">
-        Nelayan Resto
-       </div>
-       <div class="part4">
-        $15
-       </div> 
-      </div>
-      <span class="close">x</span>        
-     </div>
+
+    <div class="right scrollbar" id="activity-list">
 
     </div>
     
@@ -105,6 +39,8 @@
     <div class="addbutton" onclick="myFunction2()">+ Suggestion</div>
    </div>
    <div class="theform hilang" id="banciKhals">
+    <i class="backbutton fas fa-chevron-circle-left" onclick="myFunction()"></i>
+
     <p class="form_header">
        Add your custom event
        </p>
@@ -113,76 +49,63 @@
          
           <li>
                <label for="event">Event Name</label>
-               <input type="text" name="event" maxlength="100" required>
+               <input type="text" id="event-input" name="event" maxlength="100" required>
                <span>Enter the title of your event</span>
           </li>
         <li>
             <label for="description">Description</label>
-            <input class="texting" type="text" id="description">
+            <input class="texting" id="description-input" type="text" id="description">
          <span>Enter a short description for your event</span>
         </li>
           <li>
-               <label for="datefrom">Time</label>
-              <div class="flexa">
-              <span class="texting">Hour:</span>
+               <label for="datefrom">Hour</label>
                <input type="time" value="From" name="from" placeholder="From" id="hour" required>
-               <span class="texting">Duration:</span>
-               <input type="time" value="From" name="from" placeholder="From" id="duration" required>
-               </div>
-               <span>Enter starting hour and duration</span>
-          </li>
-          <li>
-               <label for="Location">Location</label>
-               <input type="text" name="Location" maxlength="100" id="location" required>
-               <span>Enter the location of the event</span>
+               <span>Enter hour</span>
           </li>
           <li>
               <label>Budget</label>
-              <input type="range" min="1" max="100000" value="500" class="slider" id="Budget" required>
+              <input type="text" id="budget-input" required>
               <p class="texting">Value:$ <span id="demo"></span></p>
               <span>Drag slider to change value</span>
         </li>
           <li>
-               <input type="submit" value="Create" onclick="myFunction()" >
+               <input type="button" value="Create" onclick="submitCustom()" >
           </li>
            </ul>
        </form>
    </div>
-   <div class="secondform hilang" id="good">
-      <div class="insidesuggestion">
-        <div class="category">
-          Cafe
-        </div>
-        <div class="theitem">
-          Kopi Kalyan
-        </div>
+
+   <div class="nantihilang hilang" id="good">
+    <div class="secondform" id="suggested-list">
+      <div class="hundred"> 
+      <i class="backbutton fas fa-chevron-circle-left" onclick="myFunction2()"></i>
       </div>
-      <div class="insidesuggestion">
-        <div class="category">
-          Mountain
-        </div>
-        <div class="theitem">
-          Klabat
-        </div>
-      </div>
-      <div class="insidesuggestion">
-        <div class="category">
-          contoh
-        </div>
-        <div class="theitem">
-          item
-        </div>
-      </div>
-      <div class="insidesuggestion">
-        <div class="category">
-          contoh
-        </div>
-        <div class="theitem">
-          item
-        </div>
-      </div>
+      
+    </div>
+      
+        <form class="form-style-7 popup hilang" id="kaode">
+          <ul>
+              <i class="backbutton3 fas fa-chevron-circle-left" onclick="myFunction3()"></i>
+              <li>
+                 <div class="flexcolor">Time</div>
+                <div class="flexa">
+                <span class="texting">Hour:</span>
+                 <input type="time" id="hour-suggested" value="From" name="from" placeholder="From" id="hour" required>
+                 <span class="texting">Duration:</span>
+                 <input type="time" value="From" name="from" placeholder="From" id="duration" required>
+                 </div>
+                 <span>Enter starting hour and duration</span>
+              </li>
+              <li>
+               <input type="button" value="Create" onclick="submitSugg()" >
+              </li>
+          </ul>
+        </form>
+     
+      
+    </div>
    </div>
-  </div>
+   
  </div>
 </div>
 
@@ -209,5 +132,7 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 </script>
+
+<script src="{{ secure_asset('js/timeline.js') }}"></script>
 
 @endsection

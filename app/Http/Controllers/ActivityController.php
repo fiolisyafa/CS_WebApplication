@@ -28,9 +28,10 @@ class ActivityController extends Controller
     public function index($id)
     {
         $preference = Preference::where('user_id', auth()->user()->id)->where('itinerary_id', $id)->pluck('activity_type_id');
+        $location = Itinerary::where('id', $id)->pluck('city_id');
 
         return response()->json(
-            SuggestedActivity::whereIn('activity_type_id', $preference)->get()
+            SuggestedActivity::whereIn('activity_type_id', $preference)->where('city_id', $location)->with('activityType')->get()
         );   
     }
 
@@ -63,11 +64,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        // $selected = SelectedActivity::where('user_id', auth()->user()->id)->where('itinerary_id', $id)->pluck('activity_id')->get();
-        // return response()->json([
-        //     'selected' = SuggestedActivity::where('id', $selected)->get();
-        //     ''
-        // ]);
+        //
     }
 
     /**
@@ -90,26 +87,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'name' => 'required',
-        //     'description' => 'nullable',
-        //     'fee' => ['required', 'integer'],
-        //     'city_id' => ['required', 'integer', 'exist:cities'],
-        //     'activity_type_id' => ['required', 'integer'],
-        //     'image' => ['nullable', 'string']
-        // ]);
-
-        // $activity = SuggestedActivity::find($id);
-        // $activity->name = $request->input('name');
-        // $activity->description = $request->input('description');
-        // $activity->fee = $request->input('fee');
-        // $activity->city_id = $request->input('city_id');
-        // $activity->activity_type_id = $request->input('activity_type_id');
-        // $activity->image = $request->input('image');
-        // $activity->save();
-
-        // return redirect('pages.suggestedactivity');  
-
+        //
     }
 
     /**

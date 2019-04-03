@@ -1,12 +1,11 @@
 @extends('layout')
 
 @section('heads')
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/stylesheet.css') }}">
 @endsection
 
 @section('content')
-      <!-- Flexes the two halves of the page (Form and Checkbox)       -->
-      
+      <!-- Flexes the two halves of the page (Form and Checkbox)       -->  
       <div class="flex_row">
 
 
@@ -28,13 +27,6 @@
             <div>
               <label for="date"> From: </label>
               <input type="date" id="fromdate" name="date">
-
-{{--               <label for="location"> Country: </label>
-              <select id="fromcountry" name="country">
-                <option value="JKT">Jakarta, Indonesia</option>
-                <option value="JPN">Tokyo, Japan</option>
-                <option value="USA">San Francisco, USA</option>
-              </select> --}}
             </div>
             <div>
               <label for="date"> Until: </label>
@@ -83,7 +75,7 @@
 </div>
 
 <script>
-function submitmyplan() {
+  function submitmyplan() {
     var tocountry = document.getElementById("tocountry").value,
         budget = document.getElementById("estimated-budget").value,
         tripname = document.getElementById("tripname").value,
@@ -112,8 +104,16 @@ function submitmyplan() {
       activities: activities
     };
 
-    fetch('http://mochinerary.id/api/dashboard/create', {
-      method: 'post',
+    var current = localStorage.currentItinerary;
+
+    var url = 'http://mochinerary.id/api/dashboard/create';
+    if (current) {
+      url = `http://mochinerary.d/api/dashboard/${current}/edit`;
+    }
+
+    // fetch('http://mochinerary.id/api/dashboard/create', {
+    fetch(url, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -128,15 +128,18 @@ function submitmyplan() {
         return res.json();
       })
       .then(result => {
+        localStorage.setItem('itinerary', JSON.stringify(result));
         console.log(result);
         console.log('berhasil');
       }).catch(err => {
         console.log('error');
       })
+      location.href = "timeline";
   }
 
   function fetchCities() {
     fetch('http://mochinerary.id/api/dashboard/cities', {
+    // fetch('http://127.0.0.1:8001/api/dashboard/cities', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -157,6 +160,7 @@ function submitmyplan() {
 
   function fetchActivityTypes() {
     fetch('http://mochinerary.id/api/dashboard/activitytype', {
+      // fetch('http://127.0.0.1:8001/api/dashboard/activitytype', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -180,8 +184,30 @@ function submitmyplan() {
         document.getElementById('activitytypecontainer').appendChild(checkbox);
         document.getElementById('activitytypecontainer').appendChild(label);
       });
+
+      setForm();
       
     });
+  }
+
+  function setForm() {
+    var current = JSON.parse(localStorage.getItem('itinerary'));
+
+    if (current) {
+      document.getElementById('tripname').value = current.name;
+      document.getElementById("tocountry").value = current.city_id;
+      document.getElementById("estimated-budget").value = current.budget;
+      document.getElementById("description").value = current.description;
+      document.getElementById("fromdate").value = current.date_from;
+      document.getElementById("untildate").value = current.date_to;
+      document.getElementById("people").value = current.number_of_people;
+
+      console.log(current);
+
+      current.preferences.forEach(p => {
+        document.getElementById('check-' + p.activity_type_id).checked = true;
+      });
+    }
   }
 
   window.onload = () => {

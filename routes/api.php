@@ -65,7 +65,7 @@ Route::group(['prefix' => 'itinerary'], function ($router) {
 	//stores a custom activity
 	Route::put('/{id}/create', 'UsersActivityController@storeCustom');
 	
-	//deletes a suggested activity from selected activities
+	//deletes an activity
 	Route::delete('/{id}/{ac_id}/delete', 'UsersActivityController@destroy');
 
 	//returns the total budget and all the fees
@@ -75,4 +75,5 @@ Route::group(['prefix' => 'itinerary'], function ($router) {
 	Route::put('/{id}/budget/edit', 'BudgetController@update');
 });
 
+//allows users to register
 Route::post('register', 'Auth\RegisterController@register');

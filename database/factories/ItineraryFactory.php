@@ -5,6 +5,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Itinerary::class, function (Faker $faker) {
     return [
+    	'city_id' => $faker->numberBetween($min = 1, $max = 96),
         'budget' => $faker->numberBetween($min = 500, $max = 1000),
         'name' => $faker->sentence($nbWords = 4, $variableNbWords = true),
         'description' => $faker->text($maxNbChars = 200),

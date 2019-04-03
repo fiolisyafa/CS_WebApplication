@@ -36,7 +36,9 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        return $user;
+        $token = auth()->login($user);
+
+        return response()->json(['access_token' => $token]);
     }
 
     /**

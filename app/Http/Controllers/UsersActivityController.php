@@ -38,7 +38,7 @@ class UsersActivityController extends Controller
     }
     public function returnSelected($id)
     {
-        $selected = SelectedActivity::where('user_id', auth()->user()->id)->where('itinerary_id', $id)->get();  
+        $selected = SelectedActivity::where('user_id', auth()->user()->id)->where('itinerary_id', $id)->with('activity')->get();  
 
         return response()->json($selected);
     }
@@ -87,7 +87,7 @@ class UsersActivityController extends Controller
     public function storeSuggested(Request $request, $id, $ac_id)
     {
         $request->validate([
-            'activity_id' => 'exist:suggested_activities',
+            'activity_id' => 'exists:suggested_activities,id',
             'date_time' => 'required'
         ]);
 
@@ -97,6 +97,8 @@ class UsersActivityController extends Controller
             'activity_id' => $ac_id,
             'date_time' => $request->input('date_time'),
         ]);
+
+        $activity = SelectedActivity::with('activity')->find($activity['id']);
 
         return response()->json($activity);
     }
@@ -113,9 +115,7 @@ class UsersActivityController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'fee' => ['required', 'integer'],
-            'city_id' => ['required', 'integer', 'exists:cities'],
-            'activity_type_id' => ['required', 'integer'],
-            'date_time' => ['required', 'dateTime']
+            'date_time' => ['required']
         ]);
 
         $activity = CustomActivity::create([
@@ -123,9 +123,7 @@ class UsersActivityController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'fee' => $request->input('fee'),
-            'city_id' => $request->input('city_id'),
             'itinerary_id' => $id,
-            'activity_type_id' => $request->input('activity_type_id'),
             'date_time' => $request->input('date_time'),
         ]);
 
@@ -173,8 +171,6 @@ class UsersActivityController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'fee' => ['required', 'integer'],
-            'city_id' => ['required', 'integer', 'exist:cities,id'],
-            'activity_type_id' => ['required', 'integer'],
             'date_time' => ['required', 'dateTime']
         ]);
 
@@ -182,8 +178,6 @@ class UsersActivityController extends Controller
         $custom->name = $request->input('name');
         $custom->description = $request->input('description');
         $custom->fee = $request->input('fee');
-        $custom->city_id = $request->input('city_id');
-        $custom->activity_type_id = $request->input('activity_type_id');
         $custom->date_time = $request->input('date_time');
         $custom->save();
 
@@ -198,7 +192,7 @@ class UsersActivityController extends Controller
      */
     public function destroy($id, $ac_id)
     {
-        $selectedActivity = SelectedActivity::where('activity_id', $ac_id);
+        $selectedActivity = SelectedActivity::find($ac_id);
         $customActivity = CustomActivity::find($ac_id);
 
         if ($selectedActivity) {
@@ -213,10 +207,5 @@ class UsersActivityController extends Controller
                 return response()->json($customActivity);
             }
         }
-        if ($selectedActivity->user_id = auth()->user()->id) {
-            $selectedActivity->delete();
-            return response()->json($selectedActivity);
-        }
-
     }
 }

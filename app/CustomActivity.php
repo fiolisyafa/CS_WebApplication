@@ -21,7 +21,7 @@ class CustomActivity extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'itinerary_id', 'name', 'fee', 'city_id', 'activity_type_id', 'date_time',
+        'user_id', 'itinerary_id', 'name', 'description', 'fee', 'date_time',
     ];
 
 	/**

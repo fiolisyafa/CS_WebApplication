@@ -18,14 +18,11 @@ class CustomTableSeeder extends Seeder
         foreach ($user_ids as $user_id) {
         	$itinerary_ids = Itinerary::where('user_id', $user_id)->pluck('id');
         	foreach ($itinerary_ids as $itinerary_id) {
-        		$city_ids = Itinerary::where('id', $itinerary_id)->pluck('city_id');
-        		foreach ($city_ids as $city_id) {
-        			factory(App\CustomActivity::class)->create([
-        				'user_id' => $user_id,
-        				'itinerary_id' => $itinerary_id,
-        				'city_id' => $city_id
-        			]);
-        		}
+
+                factory(App\CustomActivity::class)->create([
+                    'user_id' => $user_id,
+                    'itinerary_id' => $itinerary_id,
+                ]);
         	}
         }
     }

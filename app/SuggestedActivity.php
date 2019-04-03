@@ -22,6 +22,10 @@ class SuggestedActivity extends Model
     public function city()
     {
         return $this->belongsTo('App\City');
-    }   
+    }
+
+    public function activityType() {
+        return $this->belongsTo('App\ActivityType');
+    }
 
 }
