@@ -74,8 +74,11 @@ function fetchSelected() {
       return res.json();
     })
     .then(result => {
-      localStorage.setItem('activities', JSON.stringify(result));
 
+      var activities = JSON.parse(localStorage.activities);
+      var a = [...activities, ...result];
+      
+      localStorage.setItem('activities', JSON.stringify(result));
       fetchItinerary();
 
       console.log(result);
